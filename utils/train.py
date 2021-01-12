@@ -250,7 +250,7 @@ def evaluate_model(model):
 
     for i, (inputs, targets) in enumerate(test_loader):
         if Config.cuda:
-            targets = targets.cuda(async=True)
+            targets = targets.cuda(device=None, non_blocking=False)  #targets.cuda(async=True)
         #inputs = Variable(torch.squeeze(inputs), volatile=True)
         inputs = Variable(inputs, volatile=True)
         targets = Variable(targets, volatile=True)
